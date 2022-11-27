@@ -5,20 +5,19 @@ class Solution:
         people.sort()
 
         while(l_pointer <= h_pointer):
-            if people[l_pointer] + people[h_pointer] <= weight:
-                boats+=1
-                l_pointer+=1
-                h_pointer-=1
-            elif people[h_pointer] == weight:
-                boats+=1
-                h_pointer-=1
-            elif l_pointer == h_pointer:
+            if l_pointer == h_pointer:
                 boats+=1
                 break
+            if people[l_pointer] + people[h_pointer] <= weight:
+                l_pointer+=1
+
+            h_pointer-=1
+            boats+=1
+            
         return boats
 
 bts = Solution()
-people = [1,2,3,2]
+people = [1,2]
 weight = 3
 answer = bts.boat_to_save(people, weight)
 print(answer)
